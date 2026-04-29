@@ -13,55 +13,49 @@ import {
 const services = [
   {
     icon: <Layout className="w-8 h-8" />,
-    title: "Custom Web Design",
+    title: "Custom Digital Systems",
     description:
-      "Bespoke designs crafted from scratch — no templates. Every pixel is intentional, every layout built around your brand.",
-    tags: ["Figma", "UI/UX", "Branding"],
-    color: "blue",
+      "We don’t use templates or drag-and-drop builders. Every interface is designed and built from scratch around your business logic, workflows, and users.",
+    tags: ["Custom UI", "React", "Systems"],
   },
   {
     icon: <ShoppingBag className="w-8 h-8" />,
-    title: "eCommerce Stores",
+    title: "Revenue-Driven eCommerce",
     description:
-      "Full-featured online stores with Shopify or custom headless builds. Scalable, secure, and optimized for sales.",
-    tags: ["Shopify", "Stripe", "Headless"],
-    color: "blue",
+      "High-performance online stores built for conversion, not just display. Integrated payments, inventory flows, and scalable architecture that grows with your sales.",
+    tags: ["Stripe", "Shopify", "Headless"],
   },
   {
     icon: <Search className="w-8 h-8" />,
-    title: "SEO Optimization",
+    title: "Technical SEO & Visibility",
     description:
-      "Get found on Google. We implement technical SEO, site speed improvements, and structured data markup.",
-    tags: ["Technical SEO", "Vitals", "Schema"],
-    color: "blue",
+      "We engineer your site to be discovered and ranked. Fast load speeds, structured data, and SEO foundations that actually improve traffic quality.",
+    tags: ["SEO", "Schema", "Performance"],
   },
   {
     icon: <ShieldCheck className="w-8 h-8" />,
-    title: "Website Maintenance",
+    title: "System Maintenance & Reliability",
     description:
-      "Keep your site secure and fast. Monthly plans covering updates, backups, and security monitoring.",
-    tags: ["Security", "Backups", "24/7"],
-    color: "blue",
+      "Your site stays secure, updated, and operational. We handle backend stability, updates, backups, and ongoing system health so you don’t have downtime risk.",
+    tags: ["Security", "Backups", "Monitoring"],
   },
   {
     icon: <Zap className="w-8 h-8" />,
-    title: "Performance & Speed",
+    title: "Performance Engineering",
     description:
-      "Slow sites lose customers. We optimize load times and code to ensure your site loads in under 2 seconds.",
-    tags: ["<2s Load", "CDN", "Edge"],
-    color: "blue",
+      "We optimise real-world performance, not just scores. Faster load times, reduced friction, and infrastructure tuned for scale and user retention.",
+    tags: ["<2s Load", "CDN", "Optimization"],
   },
   {
     icon: <BarChart3 className="w-8 h-8" />,
-    title: "Conversion Optimization",
+    title: "Conversion & Revenue Optimization",
     description:
-      "We analyze user behavior and optimize for conversions. Turning your traffic into measurable revenue.",
-    tags: ["A/B Testing", "Heatmaps", "CRO"],
-    color: "blue",
+      "We analyse user behaviour and refine flows to increase conversions. Every improvement is tied directly to measurable business outcomes.",
+    tags: ["CRO", "Analytics", "A/B Testing"],
   },
 ];
 
-// Motion Variants for Staggered Reveal
+// Motion Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -92,7 +86,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-blue-600 text-sm font-bold tracking-[0.2em] uppercase mb-4"
           >
-            Capabilities
+            What We Build
           </motion.p>
 
           <motion.h2
@@ -102,9 +96,10 @@ export default function Services() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight"
           >
-            Everything you need to <br />
+            We build systems — not templates.
+            <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
-              dominate the web.
+              designed to grow your business.
             </span>
           </motion.h2>
 
@@ -115,8 +110,9 @@ export default function Services() {
             transition={{ delay: 0.2 }}
             className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed"
           >
-            We don't just build websites; we build high-performance business
-            assets designed to scale your brand to the next level.
+            Modern tools like Wix or AI builders can create simple websites. We
+            build custom systems with real logic, integrations, and scalability
+            — designed for businesses that need more than a template.
           </motion.p>
         </div>
 
@@ -134,7 +130,6 @@ export default function Services() {
               whileHover={{ y: -8 }}
               className="group p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-xl hover:shadow-blue-50 transition-all duration-300 relative overflow-hidden"
             >
-              {/* Card Highlight Effect */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
               <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500">
