@@ -1,120 +1,112 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, ShieldCheck } from "lucide-react";
 
 const packages = [
   {
     name: "Starter",
-    tagline: "Perfect for small businesses",
-    onceOff: 4999,
-    monthly: 299,
+    tagline: "Essential digital presence",
+    onceOff: 6500,
+    monthly: 450,
     highlight: false,
+    coverage: "3 Months Free Support",
     features: [
-      "5-page website",
-      "Mobile responsive",
-      "Contact form",
-      "Basic SEO",
-      "SSL certificate",
+      "5-Page High-Speed Site",
+      "Free .co.za Domain",
+      "Standard Hosting",
+      "Basic SEO Setup",
+      "SSL Certificate",
     ],
-    notIncluded: ["eCommerce", "Custom animations"],
     cta: "Start Small",
   },
   {
     name: "Business",
-    tagline: "For growing brands",
-    onceOff: 9999,
-    monthly: 599,
+    tagline: "Performance & Growth",
+    onceOff: 12500,
+    monthly: 850,
     highlight: true,
+    coverage: "6 Months Free Support",
     features: [
-      "15-page website",
-      "Custom Figma design",
-      "CMS / Blog",
+      "Up to 15 Pages",
+      "Managed Cloud Hosting",
       "Advanced SEO",
-      "Custom animations",
-      "Newsletter setup",
+      "CMS / Blog Integration",
+      "Custom Animations",
+      "Monthly Analytics",
     ],
-    notIncluded: ["eCommerce"],
     cta: "Most Popular",
   },
   {
     name: "Premium",
-    tagline: "Full digital presence",
-    onceOff: 19999,
-    monthly: 999,
+    tagline: "The Full Creative Suite",
+    onceOff: 24500,
+    monthly: 1500,
     highlight: false,
+    coverage: "12 Months Free Support",
     features: [
-      "Unlimited pages",
-      "eCommerce ready",
-      "Custom API builds",
-      "Priority support",
-      "Conversion optimization",
+      "Unlimited Pages",
+      "Professional Photography",
+      "High-End 3D/Motion Design",
+      "Technical SEO Optimization",
+      "E-commerce Ready",
+      "Priority 24/7 Support",
     ],
-    notIncluded: [],
     cta: "Scale Now",
   },
 ];
 
-function formatPrice(n) {
-  return `R${n.toLocaleString("en-ZA")}`;
-}
-
-export default function Packages() {
+export default function PricingSection() {
   const [billing, setBilling] = useState("once-off");
 
   return (
-    <section
-      id="packages"
-      className="py-24 px-6 bg-slate-50 relative overflow-hidden"
-    >
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.4] pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(#cbd5e1 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-        }}
-      />
+    <section className="relative py-24 px-6 bg-[#F8FAFC] overflow-hidden">
+      {/* 🌫️ Pattern: Ambient Glow Background System */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#DBEAFE] blur-[120px] opacity-50 pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] rounded-full bg-[#DBEAFE] blur-[100px] opacity-40 pointer-events-none" />
 
+      {/* 📐 Pattern: Centered Container SaaS Grid Layout */}
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-blue-600 text-sm font-bold tracking-[0.2em] uppercase mb-4"
+            className="text-[#2563EB] text-xs font-black uppercase tracking-[0.3em] mb-4"
           >
-            Transparent Pricing
+            Flexible Investment
           </motion.p>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8 tracking-tight">
-            Ready to <span className="text-blue-600">Level Up?</span>
+
+          {/* 🔤 Pattern: High Contrast Hero Typography */}
+          <h2 className="text-5xl md:text-7xl font-extrabold text-[#0F172A] mb-8 tracking-tight">
+            Ready to <span className="text-[#2563EB]">Level Up?</span>
           </h2>
 
-          {/* Toggle with Framer Motion Layout */}
-          <div className="relative inline-flex bg-white border border-slate-200 p-1.5 rounded-2xl shadow-sm">
+          {/* Pricing Toggle */}
+          <div className="inline-flex bg-white border border-[#E2E8F0] p-1.5 rounded-2xl shadow-sm">
             {["once-off", "monthly"].map((mode) => (
               <button
                 key={mode}
                 onClick={() => setBilling(mode)}
-                className={`relative px-8 py-3 rounded-xl text-sm font-bold transition-colors z-10 ${
+                className={`relative px-8 py-3 rounded-xl text-sm font-bold transition-all z-10 ${
                   billing === mode
                     ? "text-white"
-                    : "text-slate-500 hover:text-slate-800"
+                    : "text-[#64748B] hover:text-[#0F172A]"
                 }`}
               >
                 {billing === mode && (
                   <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-blue-600 rounded-xl -z-10"
+                    layoutId="activePricingTab"
+                    className="absolute inset-0 bg-[#2563EB] rounded-xl -z-10"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-                {mode === "once-off" ? "Once-Off" : "Monthly Retainer"}
+                {mode === "once-off" ? "Once-Off" : "Monthly"}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {packages.map((pkg, i) => (
             <motion.div
               key={i}
@@ -122,23 +114,26 @@ export default function Packages() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`flex flex-col rounded-[2.5rem] p-10 transition-all duration-500 ${
+              /* 🧱 Pattern: Component Styling (Rounded-3xl, Glassmorphism Lite) */
+              className={`group flex flex-col rounded-[2.5rem] p-10 transition-all duration-500 hover:-translate-y-2 ${
                 pkg.highlight
-                  ? "bg-slate-900 text-white scale-105 shadow-2xl shadow-blue-200 ring-4 ring-blue-600/20"
-                  : "bg-white border border-slate-200 hover:border-blue-200 text-slate-900 shadow-sm"
+                  ? "bg-[#0F172A] text-white shadow-2xl scale-105 ring-4 ring-[#2563EB]/10"
+                  : "bg-white/60 backdrop-blur-md border border-[#E2E8F0] hover:border-[#2563EB]/30 text-[#0F172A] shadow-sm hover:shadow-xl"
               }`}
             >
               <div className="mb-8">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold">{pkg.name}</h3>
+                <div className="flex justify-between items-start">
+                  <h3 className="text-2xl font-extrabold tracking-tight">
+                    {pkg.name}
+                  </h3>
                   {pkg.highlight && (
-                    <span className="bg-blue-600 text-[10px] text-white font-black px-3 py-1 rounded-full uppercase tracking-tighter">
+                    <span className="bg-[#2563EB] text-[10px] text-white font-black px-3 py-1 rounded-full uppercase">
                       Best Value
                     </span>
                   )}
                 </div>
                 <p
-                  className={`text-sm ${pkg.highlight ? "text-slate-400" : "text-slate-500"}`}
+                  className={`text-sm mt-2 ${pkg.highlight ? "text-[#64748B]" : "text-[#64748B]"}`}
                 >
                   {pkg.tagline}
                 </p>
@@ -148,21 +143,26 @@ export default function Packages() {
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={billing}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    className="flex items-baseline gap-1"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                   >
-                    <span className="text-5xl font-black tracking-tight">
-                      {billing === "once-off"
-                        ? formatPrice(pkg.onceOff)
-                        : formatPrice(pkg.monthly)}
-                    </span>
-                    <span
-                      className={`text-sm font-bold ${pkg.highlight ? "text-slate-500" : "text-slate-400"}`}
-                    >
-                      {billing === "once-off" ? "/once" : "/mo"}
-                    </span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-5xl font-black tracking-tighter">
+                        R
+                        {(billing === "once-off"
+                          ? pkg.onceOff
+                          : pkg.monthly
+                        ).toLocaleString("en-ZA")}
+                      </span>
+                      <span className="text-[#64748B] font-bold text-sm">
+                        {billing === "once-off" ? "" : "/mo"}
+                      </span>
+                    </div>
+                    {billing === "once-off" && (
+                      <div className="mt-3 flex items-center gap-2 text-[#2563EB] text-xs font-bold uppercase tracking-wider">
+                        <ShieldCheck size={14} strokeWidth={3} /> {pkg.coverage}
+                      </div>
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -171,20 +171,15 @@ export default function Packages() {
                 {pkg.features.map((f) => (
                   <div key={f} className="flex items-center gap-3">
                     <div
-                      className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${pkg.highlight ? "bg-blue-600/20 text-blue-400" : "bg-blue-50 text-blue-600"}`}
+                      className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${
+                        pkg.highlight
+                          ? "bg-[#2563EB]/20 text-[#2563EB]"
+                          : "bg-[#EFF6FF] text-[#2563EB]"
+                      }`}
                     >
                       <Check size={12} strokeWidth={4} />
                     </div>
-                    <span className="text-sm font-medium">{f}</span>
-                  </div>
-                ))}
-                {pkg.notIncluded.map((f) => (
-                  <div
-                    key={f}
-                    className="flex items-center gap-3 opacity-30 grayscale"
-                  >
-                    <X size={16} />
-                    <span className="text-sm">{f}</span>
+                    <span className="text-sm font-medium opacity-90">{f}</span>
                   </div>
                 ))}
               </div>
@@ -194,8 +189,8 @@ export default function Packages() {
                 whileTap={{ scale: 0.98 }}
                 className={`w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all ${
                   pkg.highlight
-                    ? "bg-blue-600 text-white hover:bg-blue-700"
-                    : "bg-slate-50 text-slate-900 border border-slate-200 hover:bg-slate-100"
+                    ? "bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-lg shadow-blue-600/20"
+                    : "bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] hover:bg-white hover:border-[#2563EB]"
                 }`}
               >
                 {pkg.cta} <ArrowRight size={18} />
@@ -204,7 +199,8 @@ export default function Packages() {
           ))}
         </div>
 
-        <p className="text-center text-slate-400 text-sm mt-12">
+        <p className="text-center text-[#64748B] text-sm mt-16 leading-relaxed">
+          Standard turnaround: 2-4 weeks. <br />
           All prices exclude VAT. South African local rates apply. 🇿🇦
         </p>
       </div>
