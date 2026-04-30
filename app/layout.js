@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "WenStorm",
+  title: "WebStorm",
   description: "Premium Web Design & Development for Modern Brands",
 };
 
