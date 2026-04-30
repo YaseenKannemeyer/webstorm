@@ -56,7 +56,7 @@ export default function Navbar() {
               <span className="relative text-white font-bold text-xl">W</span>
             </div>
             <span className="font-bold text-xl tracking-tight text-slate-900">
-              Web<span className="text-blue-600">Studio</span>
+              Web<span className="text-blue-600">Storm</span>
             </span>
           </a>
 
