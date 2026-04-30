@@ -59,7 +59,10 @@ export default function PricingSection() {
   const [active, setActive] = useState(1);
 
   return (
-    <section className="relative py-24 bg-[#F8FAFC] overflow-hidden min-h-screen flex flex-col justify-center">
+    <section
+      id="packages"
+      className="relative py-24 bg-[#F8FAFC] overflow-hidden min-h-screen flex flex-col justify-center"
+    >
       {/* 🌫 Ambient Background Blobs */}
       <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] bg-blue-200 opacity-30 blur-[120px] rounded-full" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vh] bg-blue-100 opacity-40 blur-[140px] rounded-full" />

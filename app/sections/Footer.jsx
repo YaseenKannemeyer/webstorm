@@ -27,7 +27,7 @@ export default function Footer() {
               <span className="text-blue-600 italic">your vision?</span>
             </h3>
             <p className="text-slate-500 font-medium">
-              Join 150+ high-growth businesses who chose WebCraft.
+              Join 150+ high-growth businesses who chose WebStorm.
             </p>
           </div>
           <motion.a
@@ -48,7 +48,7 @@ export default function Footer() {
                 <span className="text-white font-black text-xl">W</span>
               </div>
               <span className="text-slate-900 text-2xl font-black tracking-tighter">
-                Web<span className="text-blue-600">Craft</span>
+                Web<span className="text-blue-600">Storm</span>
               </span>
             </a>
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-8 font-medium">
@@ -96,7 +96,7 @@ export default function Footer() {
         {/* Bottom bar: Neutral System */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-10 border-t border-slate-200">
           <p className="text-slate-400 text-xs font-bold tracking-widest uppercase">
-            © 2026 WebCraft Studio.{" "}
+            © 2026 WebStorm Studio.{" "}
             <span className="hidden sm:inline">All rights reserved.</span>
           </p>
           <div className="flex items-center gap-2 text-slate-400 text-xs font-bold uppercase tracking-widest">
