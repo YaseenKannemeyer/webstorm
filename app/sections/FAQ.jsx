@@ -47,13 +47,7 @@ export default function FAQ() {
           >
             Support
           </motion.p>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-slate-900 text-5xl md:text-7xl font-black tracking-tight leading-[0.9] mb-6"
-          >
-            Common <span className="text-blue-600 italic">Questions.</span>
-          </motion.h2>
+
           <p className="text-slate-500 text-lg font-medium">
             Everything you need to know before we launch your vision.
           </p>

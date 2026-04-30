@@ -20,17 +20,13 @@ export default function BentoGridDemo() {
 
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-12 text-center">
-          {/* 🔵 Blue-themed gradient header */}
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+          <p className="text-blue-600 text-xs font-bold uppercase tracking-[0.3em] mb-4">
             Our Services
-          </h2>
+          </p>
 
-          {/* ✨ Expanded paragraph */}
-          <p className="mt-5 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-500 max-w-xl mx-auto">
             We design and build high-performance digital experiences tailored to
-            modern businesses. From scalable eCommerce platforms to
-            conversion-driven interfaces, every solution is engineered for
-            speed, clarity, and measurable growth.
+            modern businesses.
           </p>
         </div>
 
