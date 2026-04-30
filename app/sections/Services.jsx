@@ -73,82 +73,113 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="py-24 px-6 bg-white relative overflow-hidden"
+      className="py-20 sm:py-28 px-4 sm:px-6 bg-[#f8fafc] relative overflow-hidden"
     >
-      {/* Background Accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-[120px] pointer-events-none" />
+      {/* 🔥 Background Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[600px] sm:h-[900px] bg-gradient-to-r from-blue-200/40 via-indigo-200/30 to-purple-200/40 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
+        {/* ✅ Header */}
+        <div className="text-center mb-14 sm:mb-20">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-blue-600 text-sm font-bold tracking-[0.2em] uppercase mb-4"
+            className="text-blue-600 text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-3 sm:mb-4"
           >
             What We Build
           </motion.p>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight"
-          >
-            We build systems — not templates.
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">
-              designed to grow your business.
-            </span>
-          </motion.h2>
 
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-slate-500 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-slate-500 text-sm sm:text-lg max-w-md sm:max-w-2xl mx-auto leading-relaxed"
           >
-            Modern tools like Wix or AI builders can create simple websites. We
-            build custom systems with real logic, integrations, and scalability
-            — designed for businesses that need more than a template.
+            We don’t just design websites;, we build scalable systems with real
+            logic, integrations, and performance at the core.
           </motion.p>
         </div>
 
+        {/* ✅ Cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="
+grid 
+grid-cols-1 
+sm:grid-cols-2 
+lg:grid-cols-3 
+xl:grid-cols-3
+gap-3 sm:gap-4 lg:gap-5
+"
         >
           {services.map((service, i) => (
             <motion.div
               key={i}
               variants={cardVariants}
-              whileHover={{ y: -8 }}
-              className="group p-8 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-xl hover:shadow-blue-50 transition-all duration-300 relative overflow-hidden"
+              whileHover={{ y: -6 }}
+              className="
+group relative
+p-5 sm:p-6
+rounded-2xl
+bg-white/70 backdrop-blur-xl
+border border-white/60
+shadow-sm
+hover:shadow-lg hover:shadow-blue-100/40
+transition-all duration-300
+overflow-hidden
+flex flex-col
+          "
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              {/* Glow on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-blue-100/40 via-transparent to-purple-100/40" />
 
-              <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500">
+              {/* Icon */}
+              <div
+                className="
+            relative z-10
+            w-10 h-10 sm:w-14 sm:h-14
+            rounded-xl
+            bg-gradient-to-br from-blue-600 to-indigo-600
+            text-white
+            flex items-center justify-center
+            mb-6
+            shadow-lg shadow-blue-500/20
+            group-hover:scale-110 transition-transform duration-300
+          "
+              >
                 {service.icon}
               </div>
 
-              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
+              {/* Title */}
+              <h3 className="relative z-10 text-lg sm:text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                 {service.title}
               </h3>
 
-              <p className="text-slate-500 leading-relaxed mb-8">
+              {/* Description */}
+              <p className="relative z-10 text-slate-500 text-sm sm:text-base leading-relaxed mb-6">
                 {service.description}
               </p>
 
-              <div className="flex flex-wrap gap-2 mt-auto">
+              {/* Tags */}
+              <div className="relative z-10 flex flex-wrap gap-2">
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] uppercase tracking-wider font-bold text-slate-400 bg-slate-50 border border-slate-100 rounded-lg px-3 py-1.5 group-hover:border-blue-100 group-hover:text-blue-500 transition-colors"
+                    className="
+                  text-[10px] sm:text-xs
+                  uppercase tracking-wider font-semibold
+                  text-slate-500
+                  bg-white/70
+                  border border-slate-200
+                  rounded-md px-2.5 py-1
+                  group-hover:text-blue-600 group-hover:border-blue-200
+                  transition
+                "
                   >
                     {tag}
                   </span>
