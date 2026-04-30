@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, ArrowRight, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { Check, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
 
 const packages = [
   {
@@ -18,7 +18,6 @@ const packages = [
       "Basic SEO Setup",
       "SSL Certificate",
     ],
-    cta: "Start Small",
   },
   {
     name: "Business",
@@ -35,7 +34,6 @@ const packages = [
       "Custom Animations",
       "Monthly Analytics",
     ],
-    cta: "Most Popular",
   },
   {
     name: "Premium",
@@ -43,165 +41,164 @@ const packages = [
     onceOff: 24500,
     monthly: 1500,
     highlight: false,
-    coverage: "12 Months Free Support",
+    coverage: "12 Months Priority SLA",
     features: [
-      "Unlimited Pages",
+      "Unlimited Pages & Layouts",
+      "Custom WebGL / 3D Experiences",
+      "High-End Motion Design",
+      "Headless CMS / E-commerce",
       "Professional Photography",
-      "High-End 3D/Motion Design",
-      "Technical SEO Optimization",
-      "E-commerce Ready",
-      "Priority 24/7 Support",
+      "Technical SEO & A/B Testing",
+      "Dedicated Account Manager",
     ],
-    cta: "Scale Now",
   },
 ];
 
 export default function PricingSection() {
   const [billing, setBilling] = useState("once-off");
+  const [active, setActive] = useState(1);
 
   return (
-    <section className="relative py-24 px-6 bg-[#F8FAFC] overflow-hidden">
-      {/* 🌫️ Pattern: Ambient Glow Background System */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#DBEAFE] blur-[120px] opacity-50 pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] rounded-full bg-[#DBEAFE] blur-[100px] opacity-40 pointer-events-none" />
+    <section className="relative py-24 bg-[#F8FAFC] overflow-hidden min-h-screen flex flex-col justify-center">
+      {/* 🌫 Ambient Background Blobs */}
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] bg-blue-200 opacity-30 blur-[120px] rounded-full" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vh] bg-blue-100 opacity-40 blur-[140px] rounded-full" />
 
-      {/* 📐 Pattern: Centered Container SaaS Grid Layout */}
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 w-full px-6">
+        {/* HEADER */}
         <div className="text-center mb-20">
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[#2563EB] text-xs font-black uppercase tracking-[0.3em] mb-4"
-          >
+          <p className="text-blue-600 text-xs font-bold uppercase tracking-[0.3em] mb-4">
             Flexible Investment
-          </motion.p>
+          </p>
 
-          {/* 🔤 Pattern: High Contrast Hero Typography */}
-          <h2 className="text-5xl md:text-7xl font-extrabold text-[#0F172A] mb-8 tracking-tight">
-            Ready to <span className="text-[#2563EB]">Level Up?</span>
+          <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
+            Ready to <span className="text-blue-600">Level Up?</span>
           </h2>
 
-          {/* Pricing Toggle */}
-          <div className="inline-flex bg-white border border-[#E2E8F0] p-1.5 rounded-2xl shadow-sm">
+          <p className="text-slate-500 max-w-xl mx-auto">
+            Choose a package that fits your business growth stage.
+          </p>
+
+          {/* Toggle */}
+          <div className="mt-10 inline-flex bg-white border border-slate-200 rounded-2xl p-1 shadow-sm">
             {["once-off", "monthly"].map((mode) => (
               <button
                 key={mode}
                 onClick={() => setBilling(mode)}
-                className={`relative px-8 py-3 rounded-xl text-sm font-bold transition-all z-10 ${
+                className={`px-6 py-2 rounded-xl text-sm font-semibold transition ${
                   billing === mode
-                    ? "text-white"
-                    : "text-[#64748B] hover:text-[#0F172A]"
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "text-slate-500 hover:text-slate-900"
                 }`}
               >
-                {billing === mode && (
-                  <motion.div
-                    layoutId="activePricingTab"
-                    className="absolute inset-0 bg-[#2563EB] rounded-xl -z-10"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
                 {mode === "once-off" ? "Once-Off" : "Monthly"}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {packages.map((pkg, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              /* 🧱 Pattern: Component Styling (Rounded-3xl, Glassmorphism Lite) */
-              className={`group flex flex-col rounded-[2.5rem] p-10 transition-all duration-500 hover:-translate-y-2 ${
-                pkg.highlight
-                  ? "bg-[#0F172A] text-white shadow-2xl scale-105 ring-4 ring-[#2563EB]/10"
-                  : "bg-white/60 backdrop-blur-md border border-[#E2E8F0] hover:border-[#2563EB]/30 text-[#0F172A] shadow-sm hover:shadow-xl"
-              }`}
-            >
-              <div className="mb-8">
-                <div className="flex justify-between items-start">
-                  <h3 className="text-2xl font-extrabold tracking-tight">
-                    {pkg.name}
-                  </h3>
-                  {pkg.highlight && (
-                    <span className="bg-[#2563EB] text-[10px] text-white font-black px-3 py-1 rounded-full uppercase">
-                      Best Value
-                    </span>
-                  )}
-                </div>
-                <p
-                  className={`text-sm mt-2 ${pkg.highlight ? "text-[#64748B]" : "text-[#64748B]"}`}
-                >
-                  {pkg.tagline}
-                </p>
-              </div>
+        {/* FAN CAROUSEL */}
+        <motion.div
+          className="relative w-full flex items-center justify-center"
+          style={{ perspective: "1200px", height: "620px" }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          onDragEnd={(e, info) => {
+            if (info.offset.x < -50)
+              setActive((a) => Math.min(a + 1, packages.length - 1));
+            if (info.offset.x > 50) setActive((a) => Math.max(a - 1, 0));
+          }}
+        >
+          {packages.map((pkg, i) => {
+            const offset = i - active;
 
-              <div className="mb-10">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={billing}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                  >
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-5xl font-black tracking-tighter">
-                        R
-                        {(billing === "once-off"
-                          ? pkg.onceOff
-                          : pkg.monthly
-                        ).toLocaleString("en-ZA")}
-                      </span>
-                      <span className="text-[#64748B] font-bold text-sm">
-                        {billing === "once-off" ? "" : "/mo"}
-                      </span>
+            const isActive = offset === 0;
+
+            return (
+              <motion.div
+                key={pkg.name}
+                onClick={() => setActive(i)}
+                animate={{
+                  rotateY: offset * 25,
+                  x: offset * 240,
+                  scale: isActive ? 1.05 : 0.85,
+                  zIndex: isActive ? 10 : 5 - Math.abs(offset),
+                  opacity: Math.abs(offset) > 2 ? 0 : 1,
+                }}
+                transition={{ type: "spring", stiffness: 180, damping: 22 }}
+                className="absolute w-[340px] cursor-pointer"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                {/* GLASS CARD */}
+                <div
+                  className={`rounded-3xl p-8 border transition-all duration-300 backdrop-blur-md shadow-sm hover:shadow-xl hover:-translate-y-2 ${
+                    pkg.highlight
+                      ? "bg-white border-blue-200 shadow-blue-100/50"
+                      : "bg-white/70 border-slate-200"
+                  }`}
+                >
+                  {/* TITLE */}
+                  <div className="mb-6">
+                    <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
+                      {pkg.name}
+                      {pkg.highlight && (
+                        <Sparkles className="text-blue-600" size={16} />
+                      )}
+                    </h3>
+                    <p className="text-sm text-slate-500">{pkg.tagline}</p>
+                  </div>
+
+                  {/* PRICE */}
+                  <div className="mb-6">
+                    <div className="text-4xl font-black text-slate-900">
+                      R
+                      {(billing === "once-off"
+                        ? pkg.onceOff
+                        : pkg.monthly
+                      ).toLocaleString("en-ZA")}
                     </div>
+
                     {billing === "once-off" && (
-                      <div className="mt-3 flex items-center gap-2 text-[#2563EB] text-xs font-bold uppercase tracking-wider">
-                        <ShieldCheck size={14} strokeWidth={3} /> {pkg.coverage}
+                      <div className="text-xs text-blue-600 font-semibold mt-2 flex items-center gap-1">
+                        <ShieldCheck size={14} />
+                        {pkg.coverage}
                       </div>
                     )}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              <div className="space-y-4 mb-12 flex-grow">
-                {pkg.features.map((f) => (
-                  <div key={f} className="flex items-center gap-3">
-                    <div
-                      className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${
-                        pkg.highlight
-                          ? "bg-[#2563EB]/20 text-[#2563EB]"
-                          : "bg-[#EFF6FF] text-[#2563EB]"
-                      }`}
-                    >
-                      <Check size={12} strokeWidth={4} />
-                    </div>
-                    <span className="text-sm font-medium opacity-90">{f}</span>
                   </div>
-                ))}
-              </div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className={`w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition-all ${
-                  pkg.highlight
-                    ? "bg-[#2563EB] text-white hover:bg-[#1D4ED8] shadow-lg shadow-blue-600/20"
-                    : "bg-[#F8FAFC] text-[#0F172A] border border-[#E2E8F0] hover:bg-white hover:border-[#2563EB]"
-                }`}
-              >
-                {pkg.cta} <ArrowRight size={18} />
-              </motion.button>
-            </motion.div>
-          ))}
-        </div>
+                  {/* FEATURES */}
+                  <div className="space-y-3 mb-8">
+                    {pkg.features.map((f) => (
+                      <div
+                        key={f}
+                        className="flex items-start gap-2 text-sm text-slate-600"
+                      >
+                        <Check size={14} className="text-blue-600 mt-1" />
+                        {f}
+                      </div>
+                    ))}
+                  </div>
 
-        <p className="text-center text-[#64748B] text-sm mt-16 leading-relaxed">
-          Standard turnaround: 2-4 weeks. <br />
-          All prices exclude VAT. South African local rates apply. 🇿🇦
+                  {/* CTA */}
+                  <button
+                    className={`w-full py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 transition ${
+                      pkg.highlight
+                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                        : "bg-slate-900 text-white hover:bg-slate-800"
+                    }`}
+                  >
+                    Get Started <ArrowRight size={16} />
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* FOOTER */}
+        <p className="text-center text-slate-500 text-sm mt-16">
+          Standard turnaround: 2–4 weeks • All prices exclude VAT • 🇿🇦 South
+          African rates
         </p>
       </div>
     </section>
