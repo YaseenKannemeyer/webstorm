@@ -61,11 +61,11 @@ export default function PricingSection() {
   return (
     <section
       id="packages"
-      className="relative py-24 bg-[#F8FAFC] overflow-hidden min-h-screen flex flex-col justify-center"
+      className="relative py-28 bg-gradient-to-b from-slate-50 to-white overflow-hidden min-h-screen flex flex-col justify-center"
     >
-      {/* 🌫 Ambient Background Blobs */}
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] bg-blue-200 opacity-30 blur-[120px] rounded-full" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vh] bg-blue-100 opacity-40 blur-[140px] rounded-full" />
+      {/* 🍏 Apple Ambient Glass Orbs */}
+      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[60vw] h-[60vh] bg-blue-200/40 blur-[140px] rounded-full" />
+      <div className="absolute bottom-[-15%] right-[-10%] w-[45vw] h-[45vh] bg-indigo-200/30 blur-[160px] rounded-full" />
 
       <div className="max-w-7xl mx-auto relative z-10 w-full px-6">
         {/* HEADER */}
@@ -74,16 +74,12 @@ export default function PricingSection() {
             Flexible Investment
           </p>
 
-          <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
-            Ready to <span className="text-blue-600">Level Up?</span>
-          </h2>
-
           <p className="text-slate-500 max-w-xl mx-auto">
             Choose a package that fits your business growth stage.
           </p>
 
-          {/* Toggle */}
-          <div className="mt-10 inline-flex bg-white border border-slate-200 rounded-2xl p-1 shadow-sm">
+          {/* Toggle (Glass Pill) */}
+          <div className="mt-10 inline-flex bg-white/60 backdrop-blur-xl border border-white/40 rounded-2xl p-1 shadow-lg shadow-black/5">
             {["once-off", "monthly"].map((mode) => (
               <button
                 key={mode}
@@ -103,7 +99,7 @@ export default function PricingSection() {
         {/* FAN CAROUSEL */}
         <motion.div
           className="relative w-full flex items-center justify-center"
-          style={{ perspective: "1200px", height: "620px" }}
+          style={{ perspective: "1400px", height: "640px" }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={(e, info) => {
@@ -114,7 +110,6 @@ export default function PricingSection() {
         >
           {packages.map((pkg, i) => {
             const offset = i - active;
-
             const isActive = offset === 0;
 
             return (
@@ -122,26 +117,29 @@ export default function PricingSection() {
                 key={pkg.name}
                 onClick={() => setActive(i)}
                 animate={{
-                  rotateY: offset * 25,
-                  x: offset * 240,
-                  scale: isActive ? 1.05 : 0.85,
-                  zIndex: isActive ? 10 : 5 - Math.abs(offset),
+                  rotateY: offset * 28,
+                  x: offset * 260,
+                  scale: isActive ? 1.08 : 0.82,
+                  zIndex: isActive ? 20 : 5 - Math.abs(offset),
                   opacity: Math.abs(offset) > 2 ? 0 : 1,
                 }}
-                transition={{ type: "spring", stiffness: 180, damping: 22 }}
+                transition={{ type: "spring", stiffness: 160, damping: 20 }}
                 className="absolute w-[340px] cursor-pointer"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                {/* GLASS CARD */}
+                {/* 🍏 Apple Glass Card */}
                 <div
-                  className={`rounded-3xl p-8 border transition-all duration-300 backdrop-blur-md shadow-sm hover:shadow-xl hover:-translate-y-2 ${
+                  className={`relative rounded-3xl p-8 border backdrop-blur-2xl shadow-xl transition-all duration-300 overflow-hidden ${
                     pkg.highlight
-                      ? "bg-white border-blue-200 shadow-blue-100/50"
-                      : "bg-white/70 border-slate-200"
+                      ? "bg-white/80 border-blue-200 shadow-blue-200/30"
+                      : "bg-white/60 border-white/40"
                   }`}
                 >
+                  {/* subtle light sheen */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-white/10 pointer-events-none" />
+
                   {/* TITLE */}
-                  <div className="mb-6">
+                  <div className="mb-6 relative z-10">
                     <h3 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
                       {pkg.name}
                       {pkg.highlight && (
@@ -152,7 +150,7 @@ export default function PricingSection() {
                   </div>
 
                   {/* PRICE */}
-                  <div className="mb-6">
+                  <div className="mb-6 relative z-10">
                     <div className="text-4xl font-black text-slate-900">
                       R
                       {(billing === "once-off"
@@ -170,7 +168,7 @@ export default function PricingSection() {
                   </div>
 
                   {/* FEATURES */}
-                  <div className="space-y-3 mb-8">
+                  <div className="space-y-3 mb-8 relative z-10">
                     {pkg.features.map((f) => (
                       <div
                         key={f}
@@ -184,9 +182,9 @@ export default function PricingSection() {
 
                   {/* CTA */}
                   <button
-                    className={`w-full py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 transition ${
+                    className={`w-full py-3 rounded-2xl font-semibold flex items-center justify-center gap-2 transition relative z-10 ${
                       pkg.highlight
-                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                        ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200/40"
                         : "bg-slate-900 text-white hover:bg-slate-800"
                     }`}
                   >
