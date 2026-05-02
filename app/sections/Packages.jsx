@@ -124,7 +124,7 @@ export default function PricingSection() {
                   opacity: Math.abs(offset) > 2 ? 0 : 1,
                 }}
                 transition={{ type: "spring", stiffness: 160, damping: 20 }}
-                className="absolute w-[340px] cursor-pointer"
+                className="absolute w-[280px] md:w-[340px] cursor-pointer"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 {/* 🍏 Apple Glass Card */}
