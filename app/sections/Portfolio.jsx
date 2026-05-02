@@ -5,18 +5,19 @@ import { ProjectCard, projects, categories } from "@/components/ui/projectCard";
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("All");
-  const [showAllMobile, setShowAllMobile] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
   const filteredProjects =
     activeTab === "All"
       ? projects
       : projects.filter((p) => p.category === activeTab);
 
-  const mobileLimit = 4;
+  // Default count to show before clicking "View All"
+  const displayLimit = 6;
 
-  const displayedProjects = showAllMobile
+  const displayedProjects = showAll
     ? filteredProjects
-    : filteredProjects.slice(0, mobileLimit);
+    : filteredProjects.slice(0, displayLimit);
 
   return (
     <>
@@ -68,7 +69,7 @@ export default function Portfolio() {
                   key={cat}
                   onClick={() => {
                     setActiveTab(cat);
-                    setShowAllMobile(false);
+                    setShowAll(false); // Reset view when changing category
                   }}
                   className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold tracking-wider uppercase transition-all ${
                     activeTab === cat
@@ -82,7 +83,7 @@ export default function Portfolio() {
             </div>
           </nav>
 
-          {/* ─── Card Grid — 2 cols mobile → 3 cols desktop ─── */}
+          {/* ─── Card Grid ─── */}
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-10">
             <AnimatePresence mode="popLayout">
               {displayedProjects.map((project, index) => (
@@ -95,16 +96,33 @@ export default function Portfolio() {
             </AnimatePresence>
           </div>
 
-          {/* View More Button — visible only when there are hidden cards */}
-          {filteredProjects.length > mobileLimit && (
-            <div className="flex justify-center mt-8 sm:hidden">
+          {/* ─── View All Button (Desktop & Mobile) ─── */}
+          {filteredProjects.length > displayLimit && (
+            <motion.div layout className="flex justify-center mt-12 sm:mt-16">
               <button
-                onClick={() => setShowAllMobile((prev) => !prev)}
-                className="px-6 py-3 rounded-2xl bg-white/70 border border-blue-100 text-blue-600 font-bold text-sm shadow-sm backdrop-blur-md active:scale-95 transition"
+                onClick={() => setShowAll((prev) => !prev)}
+                className="group relative inline-flex items-center justify-center px-8 py-3.5 sm:px-10 sm:py-4 bg-slate-900 text-white rounded-full font-bold text-sm sm:text-base shadow-xl shadow-blue-900/10 hover:bg-slate-800 hover:-translate-y-1 active:scale-95 transition-all duration-300"
               >
-                {showAllMobile ? "Show Less" : "View More Projects"}
+                <span className="relative z-10">
+                  {showAll ? "Show Fewer Projects" : "View All Projects"}
+                </span>
+                <svg
+                  className={`w-4 h-4 ml-2 transition-transform duration-300 ${
+                    showAll ? "rotate-180" : "group-hover:translate-x-1"
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2.5"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
               </button>
-            </div>
+            </motion.div>
           )}
         </div>
       </section>

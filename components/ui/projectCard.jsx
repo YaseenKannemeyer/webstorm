@@ -1,8 +1,15 @@
 "use client";
-import { useMotionValue, useSpring, useTransform, motion } from "framer-motion";
+import { useState } from "react";
+import {
+  useMotionValue,
+  useSpring,
+  useTransform,
+  motion,
+  AnimatePresence,
+} from "framer-motion";
 
 // --- Data ---
-export const categories = ["All", "Starter", "Business", "Premium", ,];
+export const categories = ["All", "Starter", "Business", "Premium"];
 
 export const projects = [
   {
@@ -10,104 +17,105 @@ export const projects = [
     category: "Starter",
     package: "The Professional",
     description:
-      "High-end hospitality platform featuring dynamic booking engines and parallax galleries.",
+      "A refined digital presence for Mors Design. We built a studio portfolio focused on meticulous typography, brand identities, and seamless navigation to highlight their creative process.",
     image:
-      "https://images.unsplash.com/photo-1550966841-3ee32230673d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     url: "https://www.mors.design/",
     tags: ["React", "Laravel"],
     accent: "bg-blue-700",
   },
   {
-    title: "ShoeHero 3D",
-    category: "Starter",
+    title: "Bvlgari Eclettica High Jewelry Collection",
+    category: "Premium",
     package: "The Visionary",
     description:
-      "Immersive 3D commerce experience with real-time physics and scroll-synced animation.",
-    image: "https://eclettica.bulgari.com/emerald-strata",
+      "An immersive WebGL experience unveiling 160 one-of-a-kind masterpieces. This showcase blends Roman architecture with high-end gem craftsmanship through fluid scroll animations and 3D gemstone interactions.",
+    image:
+      "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1200&q=80",
     url: "https://pf.j-or-y.com/",
     tags: ["Three.js", "GSAP"],
     accent: "bg-indigo-600",
   },
   {
-    title: "Cape Harvest",
+    title: "Bitcoin Site Redesign",
     category: "Starter",
     package: "The Professional",
     description:
-      "Premium winery marketplace with automated logistics and high-conversion UX.",
+      "A conceptual Web3 redesign exploring modern UI patterns for cryptocurrency education, highlighting decentralized finance technologies through an engaging Webflow build.",
     image:
-      "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80",
     url: "https://thebitcoin.webflow.io/",
     tags: ["Next.js", "SEO"],
     accent: "bg-blue-600",
   },
   {
-    title: "Manenberg Forum",
+    title: "Legal Growth - Legal Sites",
     category: "Starter",
     package: "The Starter",
     description:
-      "Community-driven portal optimized for sub-second load times on mobile devices.",
+      "A high-conversion professional portal for Evans Injury Attorneys, engineered to boost visibility, establish trust, and streamline client engagement for personal injury victims.",
     image:
-      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80",
     url: "https://evansinjuryattorneys.com/",
     tags: ["Vite", "PWA"],
     accent: "bg-slate-600",
   },
   {
     title: "UrbanNest",
-    category: "eCommerce",
+    category: "Business",
     package: "The Professional",
     description:
-      "Curated home-goods store with AR product previews and smart recommendation engine.",
+      "A curated eCommerce experience featuring elegant product discovery, smart recommendations, and a seamless checkout flow tailored for modern living and lifestyle goods.",
     image:
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80",
     url: "https://peaceput.com/en/shop/",
     tags: ["Next.js", "Shopify"],
     accent: "bg-blue-600",
   },
   {
     title: "VaultX Crypto",
-    category: "eCommerce",
+    category: "Business",
     package: "The Professional",
     description:
-      "Real-time crypto dashboard with live charting, portfolio analytics, and alert system.",
+      "A high-performance digital storefront and dashboard featuring secure transactions, real-time analytics, and an optimized mobile shopping experience for tech-forward users.",
     image:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
     url: "https://www.podmodturkey8.com/",
     tags: ["React", "WebSocket"],
     accent: "bg-blue-700",
   },
   {
     title: "Orbit Studio 3D",
-    category: "Visionary 3D",
+    category: "Business",
     package: "The Visionary",
     description:
-      "Award-winning creative agency site with WebGL particle fields and fluid transitions.",
+      "A visionary 3D product showcase for premium lifestyle gear, utilizing WebGL and Three.js to let users explore products from every angle with fluid, interactive transitions.",
     image:
-      "https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=1200&q=80",
     url: "https://evanlite.com/en-eu",
     tags: ["Three.js", "React"],
     accent: "bg-indigo-600",
   },
   {
     title: "Kasi Eats",
-    category: "eCommerce",
+    category: "Business",
     package: "The Starter",
     description:
-      "Lightweight township food-discovery app with offline support and map integration.",
+      "A fast, lightweight digital platform designed for local discovery, featuring robust creative direction and an intuitive UI for quick navigation and offline support.",
     image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
     url: "https://outfit.hellohello.is/",
     tags: ["Vite", "PWA"],
     accent: "bg-slate-600",
   },
   {
     title: "Luxe Linen Co.",
-    category: "eCommerce",
+    category: "Business",
     package: "The Professional",
     description:
-      "Luxury bedding brand with editorial photography, bundle builder, and subscription flows.",
+      "An elegant eCommerce storefront featuring sophisticated editorial photography, customized bundle builders, and seamless subscription flows for premium home comforts and boutique teas.",
     image:
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
     url: "https://twoleavestea.com/",
     tags: ["Next.js", "Stripe"],
     accent: "bg-blue-600",
@@ -117,7 +125,7 @@ export const projects = [
     category: "Business",
     package: "The Professional",
     description:
-      "Patient-first telehealth platform with appointment booking and secure medical records portal.",
+      "A modern health and wellness platform offering a patient-first experience, complete with intuitive product discovery for advanced skincare technologies and a secure portal.",
     image:
       "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
     url: "https://elevaremarket.com/en-qa",
@@ -126,24 +134,24 @@ export const projects = [
   },
   {
     title: "Vertex AR",
-    category: "Visionary 3D",
+    category: "Premium",
     package: "The Visionary",
     description:
-      "WebAR furniture placement tool with real-time lighting simulation and drag-to-room UX.",
+      "A cutting-edge AI and WebAR platform integrating spatial computing, allowing users to interact with intelligent tools and visualize solutions in real-time with advanced UI/UX.",
     image:
-      "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
     url: "https://oryzo.ai/",
     tags: ["Three.js", "WebXR"],
     accent: "bg-indigo-600",
   },
   {
     title: "Braai & Co.",
-    category: "Starter",
+    category: "Premium",
     package: "The Starter",
     description:
-      "Local BBQ catering booking site with menu builder and live availability calendar.",
+      "A streamlined digital interface integrating smart scheduling algorithms and interactive features to bring local catering and community booking to the modern web.",
     image:
-      "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80",
     url: "https://www.iyo.ai/",
     tags: ["Vite", "Netlify"],
     accent: "bg-slate-600",
@@ -170,19 +178,20 @@ export const ProjectCard = ({ project, index }) => {
     <motion.div
       layout
       initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.08 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
         x.set(0);
         y.set(0);
       }}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group cursor-pointer"
+      className="group cursor-pointer h-full"
     >
-      <div className="relative bg-white/60 backdrop-blur-md border border-blue-100/60 rounded-[1.25rem] sm:rounded-[2rem] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/30 hover:-translate-y-2">
+      <div className="relative h-full bg-white/60 backdrop-blur-md border border-blue-100/60 rounded-[1.25rem] sm:rounded-[2rem] overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-300/30 hover:-translate-y-2 flex flex-col">
         {/* Browser Mockup Header */}
-        <div className="h-8 sm:h-10 px-3 sm:px-6 border-b border-blue-50 flex items-center justify-between bg-white/40">
+        <div className="h-8 sm:h-10 px-3 sm:px-6 border-b border-blue-50 flex items-center justify-between bg-white/40 shrink-0">
           <div className="flex gap-1">
             <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-blue-100" />
             <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-blue-100" />
@@ -194,7 +203,7 @@ export const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Image Section */}
-        <div className="relative h-20 sm:h-36 overflow-hidden">
+        <div className="relative h-32 sm:h-48 overflow-hidden shrink-0">
           <img
             src={project.image}
             alt={project.title}
@@ -204,21 +213,21 @@ export const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Content Section */}
-        <div className="p-3 sm:p-5">
-          <div className="flex justify-between items-start mb-1.5 sm:mb-2">
+        <div className="p-4 sm:p-6 flex flex-col flex-1">
+          <div className="flex justify-between items-start mb-2 sm:mb-3">
             <div className="flex-1 min-w-0 pr-2">
               <p
-                className={`inline-block px-1.5 sm:px-2 py-0.5 rounded-full text-[7px] sm:text-[9px] font-bold text-white mb-1 sm:mb-1.5 ${project.accent}`}
+                className={`inline-block px-2 py-0.5 rounded-full text-[8px] sm:text-[10px] font-bold text-white mb-2 ${project.accent}`}
               >
                 {project.package}
               </p>
-              <h3 className="text-xs sm:text-base font-extrabold text-slate-900 tracking-tight leading-tight truncate">
+              <h3 className="text-sm sm:text-lg font-extrabold text-slate-900 tracking-tight leading-tight line-clamp-2">
                 {project.title}
               </h3>
             </div>
-            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all shrink-0">
               <svg
-                className="w-3 h-3 sm:w-4 sm:h-4"
+                className="w-4 h-4 sm:w-5 sm:h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -233,15 +242,15 @@ export const ProjectCard = ({ project, index }) => {
             </div>
           </div>
 
-          <p className="text-slate-500 text-[9px] sm:text-xs leading-relaxed mb-2 sm:mb-3 line-clamp-2">
+          <p className="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
             {project.description}
           </p>
 
-          <div className="flex gap-1 flex-wrap">
+          <div className="flex gap-1.5 flex-wrap mt-auto">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[7px] sm:text-[9px] font-bold text-blue-400 uppercase tracking-tighter border border-blue-100 px-1 sm:px-1.5 py-0.5 rounded"
+                className="text-[9px] sm:text-[11px] font-bold text-blue-500 uppercase tracking-tight border border-blue-100 bg-blue-50/50 px-2 py-1 rounded-md"
               >
                 #{tag}
               </span>
@@ -252,3 +261,72 @@ export const ProjectCard = ({ project, index }) => {
     </motion.div>
   );
 };
+
+// ─── Component: Projects Section (Parent) ────────────────────────────────────
+export default function ProjectsSection() {
+  const [showAll, setShowAll] = useState(false);
+
+  // Determine how many projects to show
+  const displayedProjects = showAll ? projects : projects.slice(0, 6);
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
+          Featured Projects
+        </h2>
+        <p className="text-slate-500 max-w-2xl mx-auto">
+          Explore a selection of our recent work across various industries.
+        </p>
+      </div>
+
+      {/* Projects Grid */}
+      <motion.div
+        layout
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+      >
+        <AnimatePresence mode="popLayout">
+          {displayedProjects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* View All Button */}
+      {projects.length > 6 && (
+        <motion.div layout className="mt-16 flex justify-center">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="group relative inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-white transition-all duration-200 bg-slate-900 rounded-full hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900"
+          >
+            {showAll ? "Show Less" : "View All Projects"}
+            <svg
+              className={`w-4 h-4 ml-2 transition-transform duration-300 ${
+                showAll ? "rotate-180" : "group-hover:translate-x-1"
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {showAll ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 15l7-7 7 7"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              )}
+            </svg>
+          </button>
+        </motion.div>
+      )}
+    </section>
+  );
+}
