@@ -37,7 +37,7 @@ export default function Portfolio() {
               whileInView={{ opacity: 1 }}
               className="text-blue-600 text-xs font-bold uppercase tracking-[0.3em] mb-4"
             >
-              Case Studies
+              Portfolio
             </motion.p>
 
             <motion.p

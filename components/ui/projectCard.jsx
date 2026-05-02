@@ -2,48 +2,41 @@
 import { useMotionValue, useSpring, useTransform, motion } from "framer-motion";
 
 // --- Data ---
-export const categories = [
-  "All",
-  "eCommerce",
-  "Visionary 3D",
-  "Business",
-  "Starter",
-];
+export const categories = ["All", "Starter", "Business", "Premium", ,];
 
 export const projects = [
   {
     title: "Mlangeni Grand",
-    category: "Business",
+    category: "Starter",
     package: "The Professional",
     description:
       "High-end hospitality platform featuring dynamic booking engines and parallax galleries.",
     image:
       "https://images.unsplash.com/photo-1550966841-3ee32230673d?auto=format&fit=crop&w=1200&q=80",
-    url: "https://mlangeni-hospitality.co.za",
+    url: "https://www.mors.design/",
     tags: ["React", "Laravel"],
     accent: "bg-blue-700",
   },
   {
     title: "ShoeHero 3D",
-    category: "Visionary 3D",
+    category: "Starter",
     package: "The Visionary",
     description:
       "Immersive 3D commerce experience with real-time physics and scroll-synced animation.",
-    image:
-      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=1200&q=80",
-    url: "https://shoe-hero-3d.vercel.app",
+    image: "https://eclettica.bulgari.com/emerald-strata",
+    url: "https://pf.j-or-y.com/",
     tags: ["Three.js", "GSAP"],
     accent: "bg-indigo-600",
   },
   {
     title: "Cape Harvest",
-    category: "eCommerce",
+    category: "Starter",
     package: "The Professional",
     description:
       "Premium winery marketplace with automated logistics and high-conversion UX.",
     image:
       "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80",
-    url: "https://capeharvest.store",
+    url: "https://thebitcoin.webflow.io/",
     tags: ["Next.js", "SEO"],
     accent: "bg-blue-600",
   },
@@ -55,7 +48,7 @@ export const projects = [
       "Community-driven portal optimized for sub-second load times on mobile devices.",
     image:
       "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80",
-    url: "https://manenberg-forum.org.za",
+    url: "https://evansinjuryattorneys.com/",
     tags: ["Vite", "PWA"],
     accent: "bg-slate-600",
   },
@@ -67,19 +60,19 @@ export const projects = [
       "Curated home-goods store with AR product previews and smart recommendation engine.",
     image:
       "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80",
-    url: "https://urbannest.co.za",
+    url: "https://peaceput.com/en/shop/",
     tags: ["Next.js", "Shopify"],
     accent: "bg-blue-600",
   },
   {
     title: "VaultX Crypto",
-    category: "Business",
+    category: "eCommerce",
     package: "The Professional",
     description:
       "Real-time crypto dashboard with live charting, portfolio analytics, and alert system.",
     image:
       "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    url: "https://vaultx.io",
+    url: "https://www.podmodturkey8.com/",
     tags: ["React", "WebSocket"],
     accent: "bg-blue-700",
   },
@@ -91,19 +84,19 @@ export const projects = [
       "Award-winning creative agency site with WebGL particle fields and fluid transitions.",
     image:
       "https://images.unsplash.com/photo-1639762681057-408e52192e55?auto=format&fit=crop&w=1200&q=80",
-    url: "https://orbitstudio.design",
+    url: "https://evanlite.com/en-eu",
     tags: ["Three.js", "React"],
     accent: "bg-indigo-600",
   },
   {
     title: "Kasi Eats",
-    category: "Starter",
+    category: "eCommerce",
     package: "The Starter",
     description:
       "Lightweight township food-discovery app with offline support and map integration.",
     image:
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
-    url: "https://kasieats.co.za",
+    url: "https://outfit.hellohello.is/",
     tags: ["Vite", "PWA"],
     accent: "bg-slate-600",
   },
@@ -115,7 +108,7 @@ export const projects = [
       "Luxury bedding brand with editorial photography, bundle builder, and subscription flows.",
     image:
       "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80",
-    url: "https://luxelinen.co.za",
+    url: "https://twoleavestea.com/",
     tags: ["Next.js", "Stripe"],
     accent: "bg-blue-600",
   },
@@ -127,7 +120,7 @@ export const projects = [
       "Patient-first telehealth platform with appointment booking and secure medical records portal.",
     image:
       "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
-    url: "https://novamed.co.za",
+    url: "https://elevaremarket.com/en-qa",
     tags: ["React", "Node.js"],
     accent: "bg-blue-700",
   },
@@ -139,7 +132,7 @@ export const projects = [
       "WebAR furniture placement tool with real-time lighting simulation and drag-to-room UX.",
     image:
       "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80",
-    url: "https://vertexar.design",
+    url: "https://oryzo.ai/",
     tags: ["Three.js", "WebXR"],
     accent: "bg-indigo-600",
   },
@@ -151,7 +144,7 @@ export const projects = [
       "Local BBQ catering booking site with menu builder and live availability calendar.",
     image:
       "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1200&q=80",
-    url: "https://braaiandco.co.za",
+    url: "https://www.iyo.ai/",
     tags: ["Vite", "Netlify"],
     accent: "bg-slate-600",
   },
